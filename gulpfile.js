@@ -8,4 +8,13 @@ global.app = {
 
 import { copy } from "./gulp/tasks/copy.js";
 
-gulp.task('default', copy)
+//функция наблюдатель
+function watcher() {
+  gulp.watch(path.watch.files, copy)
+}
+
+//Построение задач выполнения сценариев
+const dev = gulp.series(copy, watcher);
+
+//выполнение сценария по умолчанию
+gulp.task('default', dev);
