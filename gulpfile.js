@@ -1,21 +1,27 @@
 import gulp from "gulp";
 import { path } from "./gulp/config/path.js";
+import { plugins } from "./gulp/config/plugins.js";
 
 global.app = {
   path: path,
-  gulp: gulp
+  gulp: gulp,
+  plugins: plugins
 }
 
 import { copy } from "./gulp/tasks/copy.js";
 import { reset } from "./gulp/tasks/reset.js";
+import { html } from "./gulp/tasks/html.js";
 
 //функция наблюдатель
 function watcher() {
   gulp.watch(path.watch.files, copy)
+  gulp.watch(path.watch.html, html)
 }
 
+const mainTask = gulp.parallel(copy, html)
+
 //Построение задач выполнения сценариев
-const dev = gulp.series(reset, copy, watcher);
+const dev = gulp.series(reset, mainTask, watcher);
 
 //выполнение сценария по умолчанию
 gulp.task('default', dev);
