@@ -7,6 +7,7 @@ global.app = {
 }
 
 import { copy } from "./gulp/tasks/copy.js";
+import { reset } from "./gulp/tasks/reset.js";
 
 //функция наблюдатель
 function watcher() {
@@ -14,7 +15,7 @@ function watcher() {
 }
 
 //Построение задач выполнения сценариев
-const dev = gulp.series(copy, watcher);
+const dev = gulp.series(reset, copy, watcher);
 
 //выполнение сценария по умолчанию
 gulp.task('default', dev);
