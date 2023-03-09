@@ -20,10 +20,11 @@ function watcher() {
   gulp.watch(path.watch.files, copy);
   gulp.watch(path.watch.html, html);
   gulp.watch(path.watch.scss, scss);
+  gulp.watch(path.watch.js, js);
 }
 
 // Основные задачи
-const mainTask = gulp.parallel(copy, html, scss);
+const mainTask = gulp.parallel(copy, html, scss, js);
 
 //Построение задач выполнения сценариев
 const dev = gulp.series(reset, mainTask, gulp.parallel(watcher, server));

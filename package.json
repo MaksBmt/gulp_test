@@ -25,6 +25,9 @@
     "gulp-sass": "^5.1.0",
     "gulp-version-number": "^0.2.4",
     "gulp-webp-html-nosvg": "^1.1.1",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "swiper": "^9.1.0",
+    "webpack": "^5.76.0",
+    "webpack-stream": "^7.0.0"
   }
 }
