@@ -20,28 +20,28 @@ export const scss = () => {
       outputStyle: 'expanded'
     }))
     .pipe(app.plugins.replace(/@img\//g, '../img/'))
-    .pipe(groupCssMediaQueries())
-    // .pipe(
-    //   app.plugins.if(
-    //     app.isBuild,
-    //     groupCssMediaQueries()
-    //   )
-    // )
-    // .pipe(
-    //   app.plugins.if(
-    //     app.isBuild,
-    //     autoprefixer({
-    //       grid: true,
-    //       overrideBrowserslist: ["last 3 versions"],
-    //       cascade: true
-    //     })
-    //   )
-    // )
-    .pipe(autoprefixer({
-      grid: true,
-      overrideBrowserslist: ["last 3 versions"],
-      cascade: true
-    }))
+    // .pipe(groupCssMediaQueries())
+    .pipe(
+      app.plugins.if(
+        app.isBuild,
+        groupCssMediaQueries()
+      )
+    )
+    .pipe(
+      app.plugins.if(
+        app.isBuild,
+        autoprefixer({
+          grid: true,
+          overrideBrowserslist: ["last 3 versions"],
+          cascade: true
+        })
+      )
+    )
+    // .pipe(autoprefixer({
+    //   grid: true,
+    //   overrideBrowserslist: ["last 3 versions"],
+    //   cascade: true
+    // }))
     //Работа с плагином gulp-webpcss'; // Вывод WEBP изображений
     // .pipe(
     //   app.plugins.if(
@@ -56,13 +56,13 @@ export const scss = () => {
     // )
     // Раскомментировать если нужен не сжатый дубль файла стилей
     .pipe(app.gulp.dest(app.path.build.css))
-    // .pipe(
-    //   app.plugins.if(
-    //     app.isBuild,
-    //     cleanCss()
-    //   )
-    // )
-    .pipe(cleanCss())
+    .pipe(
+      app.plugins.if(
+        app.isBuild,
+        cleanCss()
+      )
+    )
+    // .pipe(cleanCss())
     .pipe(rename({
       extname: ".min.css"
     }))

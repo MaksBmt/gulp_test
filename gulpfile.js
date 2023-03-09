@@ -3,6 +3,8 @@ import { path } from "./gulp/config/path.js";
 import { plugins } from "./gulp/config/plugins.js";
 
 global.app = {
+  isBuild: process.argv.includes('--build'),
+  isDev: !process.argv.includes('--build'),
   path: path,
   gulp: gulp,
   plugins: plugins
@@ -35,9 +37,12 @@ const mainTask = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images))
 
 //Построение задач выполнения сценариев
 const dev = gulp.series(reset, mainTask, gulp.parallel(watcher, server));
+const build = gulp.series(reset, mainTask);
 
 // Экспорт сценариев
 export { svgSpriteTask }
+export { dev }
+export { build }
 
 //выполнение сценария по умолчанию
 gulp.task('default', dev);

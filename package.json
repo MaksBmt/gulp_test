@@ -5,6 +5,8 @@
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
+    "dev": "gulp",
+    "build": "gulp build --build",
     "svgSprite": "gulp svgSpriteTask"
   },
   "keywords": [],
@@ -19,6 +21,7 @@
     "gulp-file-include": "^2.3.0",
     "gulp-fonter-fix": "^0.0.1",
     "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-if": "^3.0.0",
     "gulp-imagemin": "^8.0.0",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^4.0.0",
