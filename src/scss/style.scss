@@ -24,6 +24,14 @@ body {
     color: #000;
   }
 
+  ul {
+    display: flex;
+  }
+
+  li {
+    margin-left: 55px;
+  }
+
   h1 {
     color: red;
 
